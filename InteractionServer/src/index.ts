@@ -2,10 +2,12 @@ import install from "./install";
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import sequelize from './db';
-import router from './router';
+import sequelize from "./db";
+import router from "./router";
 
-dotenv.config({ path: '.env' });
+import {User, Channel, StreamRecording} from "./model/model"
+
+dotenv.config({ path: ".env" });
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,10 +23,16 @@ app.use(
 
 const start = async () => {
   try {
-    await install()
 
+    await install()
+    
     await sequelize.authenticate();
-    await sequelize.sync();
+
+    await sequelize.sync()
+    await Channel.sync()
+    await StreamRecording.sync()
+    await User.sync()
+
 
     app.listen(PORT, () => {
       console.log(`Server is running on http://localhost:${PORT}`);
