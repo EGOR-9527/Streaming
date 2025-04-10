@@ -58,14 +58,74 @@ class ControllerUser {
 
   async logout(req: Request, res: Response): Promise<void> {
     try {
-
       const refreshToken: any = req.headers.authorization;
 
       await ServiceUser.logout(refreshToken);
-
-    } catch(err: any) {
+    } catch (err: any) {
       console.error(err);
       res.status(500).json(Error.Internal("Ошибка выхода", err.message));
+    }
+  }
+
+  async editedImg(req: Request, res: Response): Promise<void> {
+    try {
+      const userId = req.params.id;
+
+      if (!req.file) {
+        res
+          .status(400)
+          .json(
+            Error.BadRequest(
+              "Файл не загружен",
+              "Необходимо отправить изображение"
+            )
+          );
+      }
+
+      const file: any = req.file;
+
+      const avatarPath = `/imgs/${file.filename}`;
+      const updatedUser = await ServiceUser.editedImg(avatarPath, userId);
+
+      const fullImageUrl = `${req.protocol}://${req.get("host")}${avatarPath}`;
+
+      res.status(200).json({
+        success: true,
+        avatar: fullImageUrl,
+        user: updatedUser,
+      });
+    } catch (err: any) {
+      console.error(err);
+      res
+        .status(500)
+        .json(Error.Internal("Ошибка загрузки аватарки", err.message));
+    }
+  }
+
+  async editedName(req: Request, res: Response): Promise<void> {
+    try {
+      const {name} = req.body;
+      const userId = req.params.id;
+
+      if (!name || !userId) {
+        res
+          .status(400)
+          .json(
+            Error.BadRequest(
+              "Все поля должны быть заполнены",
+              "Необходимо указать: name, email"
+            )
+          );
+      }
+
+      const newName = await ServiceUser.editedName(name, userId);
+
+      res.status(201).json(newName)
+    } catch (err: any) {
+      console.error(err);
+      res
+        .status(500)
+        .json(Error.Internal("Ошибка редактирования имени", err.message));
     }
   }
 }

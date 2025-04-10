@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import sequelize from "./db";
 import router from "./router";
+import path from 'path';
 
 import {User, Channel, StreamRecording} from "./model/model"
 
@@ -14,6 +15,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use("/api", router);
+app.use('/imgs', express.static(path.join(__dirname, 'imgs')));
 app.use(
   cors({
     credentials: true,

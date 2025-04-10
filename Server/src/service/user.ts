@@ -5,9 +5,11 @@ import { User, Channel, StreamRecording } from "../model/model";
 import * as crypto from "crypto";
 import { v4 as uuidv4 } from "uuid";
 import * as bcrypt from "bcrypt";
+import multer from "multer";
+import path from "path";
+import fs from "fs";
 
 class ServiceUser {
-
   async registration(
     name: string,
     email: string,
@@ -54,31 +56,28 @@ class ServiceUser {
         throw Error.NotFound("Пользователь не найден", "Ошибка аунтификации");
       }
 
-      if(!bcrypt.compareSync(password, dataUser.password)){
+      if (!bcrypt.compareSync(password, dataUser.password)) {
         throw Error.BadRequest("Неправильный пароль", "Ошибка аунтификации");
       }
 
       await token.generateTokens({ email, userId: dataUser.id });
 
-      return dataUser
-
+      return dataUser;
     } catch (err: any) {
       console.error("Ошибка регистрации:", err);
 
       throw Error.Internal(err.message, "Ошибка аунтификации");
     }
   }
-  
-  async logout(refreshToken: string) {
-    try{
 
-      if(!refreshToken) {
+  async logout(refreshToken: string) {
+    try {
+      if (!refreshToken) {
         throw Error.BadRequest("Нет токена", "Ошибка аунтификации");
       }
 
       await token.removeToken(refreshToken);
-      
-    } catch(err: any){
+    } catch (err: any) {
       console.error(err);
       throw Error.Internal(err.message, "Ошибка выхода");
     }
@@ -86,28 +85,92 @@ class ServiceUser {
 
   async refreshToken(refreshToken: string) {
     try {
-
       const user = await User.findOne({ where: { token: refreshToken } });
 
-      if(!user) {
+      if (!user) {
         throw Error.NotFound("Пользователь не найден", "Ошибка аунтификации");
       }
 
       const isValid = await token.validateRefreshToken(refreshToken);
       if (isValid) {
-        return true
+        return true;
       }
 
-      const newTokens = await token.generateTokens({ email: user.email, userId: user.id });
+      const newTokens = await token.generateTokens({
+        email: user.email,
+        userId: user.id,
+      });
 
-      return newTokens
-
-    } catch(err: any) {
+      return newTokens;
+    } catch (err: any) {
       console.error(err);
       throw Error.Internal(err.message, "Ошибка обновления токена:");
     }
   }
 
+  async editedImg(avatarPath: string, userId: string) {
+    try {
+      const user = await User.findOne({ where: { id: userId } });
+
+      if (!user) {
+        throw Error.NotFound("Пользователь не найден", "Ошибка аунтификации");
+      }
+
+      const oldAvatarPath = user.img;
+
+      if (oldAvatarPath) {
+        const oldAvatarFullPath = path.join(__dirname, "../../", oldAvatarPath);
+        if (fs.existsSync(oldAvatarFullPath)) {
+          fs.unlinkSync(oldAvatarFullPath);
+        }
+      }
+
+      const [updatedCount, [updatedUser]] = await User.update(
+        { img: avatarPath },
+        {
+          where: { id: userId },
+          returning: true,
+        }
+      );
+
+      if (updatedCount === 0) {
+        throw Error.NotFound(
+          "Пользователь не найден",
+          "Ошибка обновления аватарки"
+        );
+      }
+
+      return updatedUser.get();
+    } catch (err: any) {
+      console.error(err);
+      throw Error.Internal(err.message, "Ошибка обновления изображения");
+    }
+  }
+
+  async editedName(name: string, userId: string) {
+    try {
+
+      const [updatedCount, [updatedUser]] = await User.update(
+        { name: name },
+        {
+          where: { id: userId },
+          returning: true,
+        }
+      );
+
+      if (updatedCount === 0) {
+        throw Error.NotFound(
+          "Пользователь не найден",
+          "Ошибка обновления имени"
+        );
+      }
+
+      return updatedUser.get();
+    } catch (err: any) {
+      console.error(err);
+      throw Error.Internal(err.message, "Ошибка обновления имени");
+    }
+  }
 }
 
 export default new ServiceUser();
