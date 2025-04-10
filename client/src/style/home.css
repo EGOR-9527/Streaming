@@ -1,0 +1,95 @@
+:root {
+  --colorPonels: #141414;
+  --colorMainText: #ffff;
+  --border: #777676;
+  --headerTextSize: min(0.625vw, 1.11111vh);
+}
+
+header {
+  max-width: 98.95833vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3.59375vw;
+  background-color: var(--colorPonels);
+  margin-inline: 0.52083vw;
+  margin-top: 0.92593vh;
+  border-radius: min(0.52083vw, 0.92593vh);
+}
+
+.logo {
+  height: 70%;
+  margin-left: 1vw;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 21.09375vw;
+}
+
+.search input {
+  border: none;
+  width: 17.70833vw;
+  height: 1.5625vw;
+  border-radius: min(0.52083vw, 0.92593vh);
+  background: none;
+  border: 0.10417vw solid var(--border);
+}
+
+.search button {
+  border: none;
+  width: 3.125vw;
+  height: 1.5625vw;
+  background: none;
+  color: var(--colorMainText);
+  font-size: var(--headerTextSize);
+  border-radius: min(0.52083vw, 0.92593vh);
+  border: 0.10417vw solid var(--border);
+}
+
+.search input::placeholder {
+  padding-left: 1vw;
+  font-size: var(--headerTextSize);
+}
+
+.container-login-registration {
+  width: 11.19792vw;
+  color: var(--colorMainText);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 1vw;
+}
+
+.buttnLogo {
+  cursor: pointer;
+  width: 4.01042vw;
+  height: 1.5625vw;
+  border-radius: min(0.52083vw, 0.92593vh);
+  border: 0.10417vw solid var(--border);
+  font-size: var(--headerTextSize);
+  background: none;
+  color: var(--colorMainText);
+}
+
+.buttonRegistration {
+  cursor: pointer;
+  font-size: var(--headerTextSize);
+  width: 6.25vw;
+  height: 1.5625vw;
+  border-radius: min(0.52083vw, 0.92593vh);
+  border: 0.10417vw solid var(--border);
+  background: none;
+  color: var(--colorMainText);
+}
+
+.container-scroll-streamers{
+    background-color: var(--colorPonels);
+    width: 18.22917vw;
+    height: 45.625vw;
+    margin-left: 0.52083vw;
+    margin-top: 0.52083vw;
+    border-radius: min(0.52083vw, 0.92593vh);
+}
