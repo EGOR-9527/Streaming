@@ -5,6 +5,8 @@
   --headerTextSize: min(0.625vw, 1.11111vh);
   --fillColor: #777676;
   --timefillColor: 0.4s;
+  --borderRadius: min(0.52083vw, 0.92593vh);
+  --colorLink: #ff1493;
 }
 
 header {
@@ -16,7 +18,7 @@ header {
   background-color: var(--colorPonels);
   margin-inline: 0.52083vw;
   margin-top: 0.92593vh;
-  border-radius: min(0.52083vw, 0.92593vh);
+  border-radius: var(--borderRadius);
 }
 
 .logo {
@@ -47,7 +49,7 @@ header {
   background: none;
   color: var(--colorMainText);
   font-size: var(--headerTextSize);
-  border-radius: min(0.52083vw, 0.92593vh);
+  border-radius: var(--borderRadius);
   border: 0.10417vw solid var(--border);
   transition: var(--timefillColor);
 }
@@ -74,16 +76,15 @@ header {
   cursor: pointer;
   width: 4.01042vw;
   height: 1.5625vw;
-  border-radius: min(0.52083vw, 0.92593vh);
+  border-radius: var(--borderRadius);
   border: 0.10417vw solid var(--border);
   font-size: var(--headerTextSize);
   background: none;
   color: var(--colorMainText);
   transition: var(--timefillColor);
-
 }
 
-.buttnLogo:hover{
+.buttnLogo:hover {
   background-color: var(--fillColor);
 }
 
@@ -92,22 +93,140 @@ header {
   font-size: var(--headerTextSize);
   width: 6.25vw;
   height: 1.5625vw;
-  border-radius: min(0.52083vw, 0.92593vh);
+  border-radius: var(--borderRadius);
   border: 0.10417vw solid var(--border);
   background: none;
   transition: var(--timefillColor);
   color: var(--colorMainText);
 }
 
-.buttonRegistration:hover{
+.buttonRegistration:hover {
   background-color: var(--fillColor);
 }
 
-.container-scroll-streamers{
-    background-color: var(--colorPonels);
-    width: 18.22917vw;
-    height: 45.625vw;
-    margin-left: 0.52083vw;
-    margin-top: 0.52083vw;
-    border-radius: min(0.52083vw, 0.92593vh);
+.container-scroll-streamers {
+  background-color: var(--colorPonels);
+  width: 18.22917vw;
+  height: 45.625vw;
+  margin-left: 0.52083vw;
+  margin-top: 0.52083vw;
+  border-radius: var(--borderRadius);
+}
+
+.ponel-login,
+.ponel-registration {
+  width: 30vw;
+  height: 20vw;
+  background-color: var(--colorPonels);
+  border-radius: var(--borderRadius);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ponel-login > input {
+  width: 20vw;
+  height: 1.6vw;
+  border-radius: var(--borderRadius);
+  margin-top: 2vw;
+  border: none;
+}
+
+.ponel-registration > input {
+  width: 20vw;
+  height: 1.6vw;
+  border-radius: var(--borderRadius);
+  margin-top: 0.3vw;
+  border: none;
+}
+
+.ponel-registration > input::placeholder {
+  padding-left: 1vw;
+}
+
+.ponel-login > input::placeholder {
+  padding-left: 1vw;
+}
+
+.ponel-login > button {
+  width: 20vw;
+  height: 1.6vw;
+  border-radius: var(--borderRadius);
+  background-color: #ff1493;
+  color: var(--colorMainText);
+  margin-top: 4vw;
+  border: none;
+  transition: var(--timefillColor);
+}
+
+.ponel-registration > button {
+  width: 20vw;
+  height: 1.6vw;
+  border-radius: var(--borderRadius);
+  background-color: #ff1493;
+  color: var(--colorMainText);
+  margin-top: 4vw;
+  border: none;
+  transition: var(--timefillColor);
+}
+
+.ponel-login > button:hover {
+  box-shadow: 0px 0px 10px #ff1493;
+}
+
+.button-move-registration {
+  border: none;
+  background: none;
+  color: var(--colorLink);
+  font-size: min(0.78125vw, 1.68889vh);
+  margin-top: 1vw;
+}
+
+.button-move-login {
+  border: none;
+  background: none;
+  color: var(--colorLink);
+  font-size: min(0.78125vw, 1.68889vh);
+  margin-top: 1vw;
+}
+
+.background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.header-login {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  color: var(--colorMainText);
+  font-size: min(0.83333vw, 1.48148vh);
+  padding-inline: 1vw;
+}
+
+.header-registration {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  color: var(--colorMainText);
+  font-size: min(0.83333vw, 1.48148vh);
+  padding-inline: 1vw;
+}
+
+.footer-registration {
+  margin-bottom: 1vw;
+}
+
+.logoUser{
+  width: 2.5vw;
+  margin-right: 1vw;
 }

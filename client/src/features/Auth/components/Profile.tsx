@@ -1,10 +1,9 @@
 import React from 'react';
+import user from "../../../svg/user.svg"
 
 const Profil: React.FC = () => {
     return (
-        <div>
-            DDDD
-        </div>
+        <img className='logoUser' src={user} alt="user"/>
     );
 };
 

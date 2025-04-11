@@ -41,7 +41,7 @@ class ServiceUser {
         userId,
       });
 
-      return {toke:accessToken, user: {
+      return {token:accessToken, user: {
         id: newUser.id,
         name: newUser.name,
         email: newUser.email,
@@ -68,7 +68,7 @@ class ServiceUser {
 
       const newToken = await token.generateTokens({ email, userId: dataUser.id });
 
-      return {toke:newToken, user: {
+      return {token:newToken, user: {
         id: dataUser.id,
         name: dataUser.name,
         email: dataUser.email,

@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from "../widgets/Header"
 import ScrollStreamers from "../widgets/ScrollStreamers"
+import AuthPonel from "../widgets/Auth/AuthPonel"
 
 
 const Home: React.FC = () => {
@@ -8,6 +9,7 @@ const Home: React.FC = () => {
         <div>
             <Header/>
             <ScrollStreamers/>
+            <AuthPonel/>
         </div>
     );
 };

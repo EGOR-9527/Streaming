@@ -1,83 +1,87 @@
-import {makeAutoObservable } from "mobx"
-import axios from "axios"
+import { makeAutoObservable } from "mobx";
+import axios from "axios";
 
-const API_URL = 'http://localhost:7000/api/';
+const API_URL = "http://localhost:7000/api/";
 
 class RestApi {
-    user: any = null;
-    error: any = null;
-    isLoading: any = false;
+  user: any = null;
+  error: any = null;
+  isLoading: boolean = false;
 
-    constructor() {
-        makeAutoObservable(this);
-    }
+  constructor() {
+    makeAutoObservable(this);
+  }
 
-    setUser(user: any) {
-        this.user = user;
-    }
-    setError(error: any) {
-        this.error = error;
-    }
-    setIsLoading(isLoading: any) {
-        this.isLoading = isLoading;
-    }
+  setUser(user: any) {
+    this.user = user;
+  }
 
-    saveToken(token: any) {
-        localStorage.setItem('token', token);
-    }
+  setError(error: any) {
+    this.error = error;
+  }
 
-    getToken(){
-        return localStorage.getItem('token');
-    }
+  setIsLoading(isLoading: boolean) {
+    this.isLoading = isLoading;
+  }
 
-    removeToken() {
-        localStorage.removeItem('token');
-    }
+  saveToken(token: any) {
+    localStorage.setItem("token", token);
+  }
 
-    async registration(name: string, email: string, password: string, birthday: string) {
-        this.isLoading(true);
-        this.setError(null);
-        try {
+  getToken() {
+    return localStorage.getItem("token");
+  }
 
-            const data: any = await axios.post(`${API_URL}registration`, {
-                name, 
-                email,
-                password,
-                birthday
-            })
+  removeToken() {
+    localStorage.removeItem("token");
+  }
 
-            this.saveToken(data.token)
+  async registration(
+    name: string,
+    email: string,
+    password: string,
+    birthday: string
+  ) {
+    this.setIsLoading(true);
+    this.setError(null);
+    try {
 
-            this.setUser(data.user)
-
-        } catch(err: any) {
-            this.setError(err);
-        } finally {
-            this.isLoading(false);
+      const response: any = await axios.post(
+        `http://localhost:7000/api/registration`,
+        {
+          name,
+          email,
+          password,
+          birthday,
         }
+      );
+
+      this.saveToken(response.data.token.accessToken);
+      this.setUser(response.data.user);
+    } catch (err: any) {
+      this.setError(err);
+    } finally {
+      this.setIsLoading(false);
     }
+  }
 
-    async login(email: string, password: string) {
-        this.isLoading(true);
-        this.setError(null);
-        try{
+  async login(email: string, password: string) {
+    this.setIsLoading(true);
+    this.setError(null);
+    try {
+      const response: any = await axios.post(`${API_URL}login`, {
+        email,
+        password,
+      });
 
-            const data: any = await axios.post(`${API_URL}login`, {
-                email,
-                password
-            })
-
-            this.saveToken(data.token)
-
-            this.setUser(data.user)
-
-        } catch(err: any){
-            this.setError(err);
-        } finally {
-            this.isLoading(false);
-        }
+      this.saveToken(response.data.token);
+      this.setUser(response.data.user);
+    } catch (err: any) {
+      this.setError(err);
+    } finally {
+      this.setIsLoading(false);
     }
-
+  }
 }
 
 const API = new RestApi();
