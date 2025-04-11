@@ -3,6 +3,8 @@
   --colorMainText: #ffff;
   --border: #777676;
   --headerTextSize: min(0.625vw, 1.11111vh);
+  --fillColor: #777676;
+  --timefillColor: 0.4s;
 }
 
 header {
@@ -47,6 +49,11 @@ header {
   font-size: var(--headerTextSize);
   border-radius: min(0.52083vw, 0.92593vh);
   border: 0.10417vw solid var(--border);
+  transition: var(--timefillColor);
+}
+
+.search button:hover {
+  background-color: var(--fillColor);
 }
 
 .search input::placeholder {
@@ -72,6 +79,12 @@ header {
   font-size: var(--headerTextSize);
   background: none;
   color: var(--colorMainText);
+  transition: var(--timefillColor);
+
+}
+
+.buttnLogo:hover{
+  background-color: var(--fillColor);
 }
 
 .buttonRegistration {
@@ -82,7 +95,12 @@ header {
   border-radius: min(0.52083vw, 0.92593vh);
   border: 0.10417vw solid var(--border);
   background: none;
+  transition: var(--timefillColor);
   color: var(--colorMainText);
+}
+
+.buttonRegistration:hover{
+  background-color: var(--fillColor);
 }
 
 .container-scroll-streamers{

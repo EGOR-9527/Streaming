@@ -2,7 +2,7 @@
 import React from 'react';
 import '../style/home.css';
 import logo from "../svg/logo.svg"
-import Profil from "../features/Profil"
+import Index from "../features/Index"
 
 const Header: React.FC = () => {
     return (
@@ -15,7 +15,7 @@ const Header: React.FC = () => {
                 <button>Найти</button>
             </div>
 
-            <Profil/>
+            <Index/>
 
         </header>
     );

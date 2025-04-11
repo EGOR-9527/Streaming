@@ -8,6 +8,7 @@ import * as bcrypt from "bcrypt";
 import multer from "multer";
 import path from "path";
 import fs from "fs";
+import toke from "./tokenService/toke";
 
 class ServiceUser {
   async registration(
@@ -27,7 +28,7 @@ class ServiceUser {
 
       const hashedPassword = await bcrypt.hash(password, 12);
 
-      await User.create({
+      const newUser = await User.create({
         id: userId,
         name: name,
         email: email,
@@ -40,7 +41,12 @@ class ServiceUser {
         userId,
       });
 
-      return accessToken;
+      return {toke:accessToken, user: {
+        id: newUser.id,
+        name: newUser.name,
+        email: newUser.email,
+        birthday: newUser.birthday,
+      }};
     } catch (err: any) {
       console.error("Ошибка регистрации:", err);
 
@@ -60,9 +66,14 @@ class ServiceUser {
         throw Error.BadRequest("Неправильный пароль", "Ошибка аунтификации");
       }
 
-      await token.generateTokens({ email, userId: dataUser.id });
+      const newToken = await token.generateTokens({ email, userId: dataUser.id });
 
-      return dataUser;
+      return {toke:newToken, user: {
+        id: dataUser.id,
+        name: dataUser.name,
+        email: dataUser.email,
+        birthday: dataUser.birthday,
+      }};
     } catch (err: any) {
       console.error("Ошибка регистрации:", err);
 
