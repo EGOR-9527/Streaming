@@ -13,10 +13,6 @@ const Registration: React.FC = () => {
     const handleRegistration = async () => {
         await API.registration(name, email, password, birthday);
 
-        if (API.error) {
-            alert('Registration failed: ' + API.error.message);
-        }
-
         AuthStore.checkToken()
         AuthStore.clickExit()
     };

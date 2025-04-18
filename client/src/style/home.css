@@ -122,6 +122,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  z-index: 100;
 }
 
 .ponel-login > input {
@@ -535,3 +536,4 @@
   font-size: min(1.04167vw, 1.85185vh);
   font-weight: bold;
 }
+

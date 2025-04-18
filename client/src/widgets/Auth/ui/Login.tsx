@@ -10,9 +10,6 @@ const Login: React.FC = () => {
 
     const handleLogin = async () => {
         await API.login(email, password);
-        if (API.error) {
-            alert('Login failed: ' + API.error.message);
-        }
 
         AuthStore.checkToken()
         AuthStore.clickExit()

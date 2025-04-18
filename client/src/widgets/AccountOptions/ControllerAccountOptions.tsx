@@ -9,11 +9,11 @@ const ControllerAccountOptions: React.FC = observer(() => {
 
     let componentToRender;
 
-    if (ControllerAccountOptionsStore.Channel) {
+    if (ControllerAccountOptionsStore.channel) {
         componentToRender = <Channel />;
-    } else if (ControllerAccountOptionsStore.Wallet) {
+    } else if (ControllerAccountOptionsStore.wallet) {
         componentToRender = <Wallet />;
-    } else if (ControllerAccountOptionsStore.Subscriptions) {
+    } else if (ControllerAccountOptionsStore.subscriptions) {
         componentToRender = <Subscriptions />;
     } else {
         componentToRender = null;

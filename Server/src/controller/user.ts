@@ -58,7 +58,8 @@ class ControllerUser {
 
   async logout(req: Request, res: Response): Promise<void> {
     try {
-      const refreshToken: any = req.headers.authorization;
+      const {refreshToken} = req.body;
+      console.log(refreshToken)
 
       await ServiceUser.logout(refreshToken);
     } catch (err: any) {
