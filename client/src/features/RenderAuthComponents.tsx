@@ -1,11 +1,13 @@
 import React from 'react';
-import Profil from "../features/Auth/components/Profile"
-import Auth from "../features/Auth/components/Auth"
+import Profil from "./Auth/components/Profile"
+import Auth from "./Auth/components/Auth"
 import { observer } from 'mobx-react-lite';
 import AuthStore from "./stores/AuthStore"
 
 
-const Index: React.FC = observer(() => {
+const RenderAuthComponents: React.FC = observer(() => {
+    AuthStore.checkToken()
+    
     const hookCheckToken = AuthStore.isToken
 
     return (
@@ -17,4 +19,4 @@ const Index: React.FC = observer(() => {
     );
 });
 
-export default Index;
+export default RenderAuthComponents;

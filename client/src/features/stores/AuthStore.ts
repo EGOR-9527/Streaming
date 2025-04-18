@@ -4,6 +4,7 @@ class AuthStore {
   isLogin: boolean = false;
   isRegistration: boolean = false;
   isToken: boolean = false;
+  isProfileManagement: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -24,8 +25,12 @@ class AuthStore {
     this.isRegistration = false;
   }
 
-  checkToken(answer: boolean) {
-    this.isToken = answer;
+  checkToken() {
+    this.isToken = !!localStorage.getItem('token');
+  }
+
+  clickProfileManagement() {
+    this.isProfileManagement = !this.isProfileManagement;
   }
 }
 

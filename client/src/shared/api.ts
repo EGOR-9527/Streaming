@@ -56,6 +56,8 @@ class RestApi {
         }
       );
 
+      console.log(response.data.token.accessToken)
+
       this.saveToken(response.data.token.accessToken);
       this.setUser(response.data.user);
     } catch (err: any) {

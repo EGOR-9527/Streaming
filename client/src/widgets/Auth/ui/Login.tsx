@@ -14,7 +14,7 @@ const Login: React.FC = () => {
             alert('Login failed: ' + API.error.message);
         }
 
-        AuthStore.checkToken(true)
+        AuthStore.checkToken()
         AuthStore.clickExit()
 
     };

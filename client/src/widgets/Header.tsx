@@ -2,11 +2,11 @@
 import React from 'react';
 import '../style/home.css';
 import logo from "../svg/logo.svg"
-import Index from "../features/Index"
+import RenderAuthComponents from "../features/RenderAuthComponents"
 
 const Header: React.FC = () => {
     return (
-        <header>
+        <header className='main-header'>
 
             <img className='logo' src={logo} alt="Логотип не загрузился" />
 
@@ -15,7 +15,7 @@ const Header: React.FC = () => {
                 <button>Найти</button>
             </div>
 
-            <Index/>
+            <RenderAuthComponents/>
 
         </header>
     );

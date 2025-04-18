@@ -9,7 +9,7 @@
   --colorLink: #ff1493;
 }
 
-header {
+.main-header {
   max-width: 98.95833vw;
   display: flex;
   align-items: center;
@@ -107,7 +107,7 @@ header {
 .container-scroll-streamers {
   background-color: var(--colorPonels);
   width: 18.22917vw;
-  height: 45.625vw;
+  height: 70vw;
   margin-left: 0.52083vw;
   margin-top: 0.52083vw;
   border-radius: var(--borderRadius);
@@ -226,7 +226,312 @@ header {
   margin-bottom: 1vw;
 }
 
-.logoUser{
+.logoUser {
   width: 2.5vw;
   margin-right: 1vw;
+}
+
+.svg-button-management {
+  width: 1.5vw;
+}
+
+.block-management {
+  display: flex;
+  color: var(--colorMainText);
+  font-size: min(0.83333vw, 1.6ф8148vh);
+}
+
+.profile-management {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  right: 0.52083vw;
+  top: 4.65vw;
+  background-color: #111111;
+  width: 20vw;
+  height: 40vw;
+  border-radius: var(--borderRadius);
+  z-index: 100;
+}
+
+.block-management {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #222222;
+  border-radius: var(--borderRadius);
+  height: 4vw;
+  width: 90%;
+  margin-top: 1.3vw;
+  font-size: min(0.9375vw, 1.66667vh);
+}
+
+.wrapper-account-options {
+  position: absolute;
+  width: 79.3vw;
+  height: 100%;
+  right: 0.52083vw;
+  top: 4.65vw;
+}
+
+.container-channel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-channel {
+  width: 100%;
+  height: 25vw;
+  background-image: url("../img/wrapper-strimming.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--borderRadius);
+  overflow: hidden;
+}
+
+.body-channel {
+  background-color: #141414;
+  opacity: 0.95;
+  width: 98%;
+  height: 48vw;
+  position: absolute;
+  border-radius: var(--borderRadius);
+  top: 22vw;
+}
+
+.header-body-channel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 1vw;
+}
+
+.profil-img-name {
+  margin-top: 1vw;
+  display: flex;
+  align-items: center;
+}
+
+.profil-img-name > p {
+  color: white;
+  margin-left: 2vw;
+  font-size: min(2.08333vw, 3.7037vh);
+}
+
+.profil-img-name > img {
+  border-radius: 10vw;
+}
+
+.button-start-strimm {
+  border: none;
+  width: 10vw;
+  height: 3vw;
+  border-radius: var(--borderRadius);
+  background-color: #ff1493;
+  transition: 0.4s;
+  color: white;
+}
+
+.button-start-strimm:hover {
+  background-color: #df0b7c;
+}
+
+.container-subscriptions {
+  padding: 0.5vw;
+}
+
+.header-subscriptions {
+  color: #ffff;
+  font-size: min(2.08333vw, 3.7037vh);
+  text-align: center;
+}
+
+.body-subscriptions {
+  margin-top: 5vw;
+}
+
+.subscriptions-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1vw;
+}
+
+.subscription {
+  color: var(--colorMainText);
+  background-color: #df0b7c;
+  border-radius: var(--borderRadius);
+  padding: 0.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: 0 1vw 1vw rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.subscription:hover {
+  transform: scale(1.05);
+}
+
+.subscription > img {
+  border-radius: 100%;
+  width: 2.08333vw;
+  height: 2.08333vw;
+  margin-right: 0.52083vw;
+}
+
+.container-wallet {
+  padding: 0.5vw;
+}
+
+.header-wallet {
+  color: #ffff;
+  font-size: min(2.08333vw, 3.7037vh);
+  text-align: center;
+}
+
+.body-wallet {
+  margin-top: 2vw;
+  background-color: #141414;
+  opacity: 0.95;
+  width: 98%;
+  height: auto;
+  padding: 1.5vw;
+  border-radius: var(--borderRadius);
+}
+
+.balance-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2vw;
+  padding-bottom: 1.5vw;
+  border-bottom: 1px solid #333;
+}
+
+.balance-info h2 {
+  color: var(--colorMainText);
+  font-size: min(1.25vw, 2.22222vh);
+  margin-bottom: 0.5vw;
+}
+
+.balance-amount {
+  color: #fff;
+  font-size: min(2.5vw, 4.44444vh);
+  font-weight: bold;
+}
+
+.wallet-actions {
+  display: flex;
+  gap: 1vw;
+}
+
+.button-deposit,
+.button-withdraw {
+  border: none;
+  width: 8vw;
+  height: 2.5vw;
+  border-radius: var(--borderRadius);
+  background-color: #ff1493;
+  transition: 0.4s;
+  color: white;
+  font-size: min(0.83333vw, 1.48148vh);
+  cursor: pointer;
+}
+
+.button-deposit:hover,
+.button-withdraw:hover {
+  background-color: #df0b7c;
+}
+
+.transaction-history h2 {
+  color: var(--colorMainText);
+  font-size: min(1.25vw, 2.22222vh);
+  margin-bottom: 1vw;
+}
+
+.transactions-list {
+  display: flex;
+  flex-direction: column;
+  max-height: 49.8vw;
+  overflow-y: auto;
+  gap: 0.8vw;
+  padding-right: 0.5vw;
+
+  scrollbar-width: thin;
+  scrollbar-color: #ff1493 #222222;
+  scrollbar-gutter: stable;
+
+  -ms-overflow-style: none;
+}
+
+.transactions-list {
+  -ms-overflow-style: none;
+}
+
+.transactions-list::-webkit-scrollbar {
+  width: 0.6vw;
+}
+
+.transactions-list::-webkit-scrollbar-track {
+  background: #222222;
+  border-radius: 1vw;
+  margin: 0.5vw 0;
+}
+
+.transactions-list::-webkit-scrollbar-thumb {
+  background-color: #ff1493;
+  border-radius: 1vw;
+  border: 0.15vw solid transparent;
+  background-clip: content-box;
+}
+
+.transactions-list::-webkit-scrollbar-thumb:hover {
+  background-color: #df0b7c;
+  border-radius: 1vw;
+}
+
+.transactions-list::-webkit-scrollbar-thumb:active {
+  background-color: #bf0970;
+}
+
+.transactions-list::-webkit-scrollbar-button {
+  display: none;
+}
+
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  padding: 0.8vw;
+  border-radius: var(--borderRadius);
+  transition: transform 0.2s;
+}
+
+.transaction:hover {
+  transform: scale(1.01);
+}
+
+.transaction-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction-type {
+  color: #fff;
+  font-size: min(0.9375vw, 1.66667vh);
+  margin-bottom: 0.3vw;
+}
+
+.transaction-date {
+  color: #aaa;
+  font-size: min(0.72917vw, 1.2963vh);
+}
+
+.transaction-amount {
+  color: #4caf50;
+  font-size: min(1.04167vw, 1.85185vh);
+  font-weight: bold;
 }

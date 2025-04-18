@@ -17,7 +17,7 @@ const Registration: React.FC = () => {
             alert('Registration failed: ' + API.error.message);
         }
 
-        AuthStore.checkToken(true)
+        AuthStore.checkToken()
         AuthStore.clickExit()
     };
 
